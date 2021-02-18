@@ -1,0 +1,68 @@
+﻿<!--Originally written by Henry, modified by Jada-->
+{% load static %} <!--Loads static files (/static/css, etc.) into the HTML file-->
+
+<!DOCTYPE html>
+
+<title>Homepage</title>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+	{% if user.is_authenticated %}
+    	<h1 style="text-align: center;">Welcome, {{ user.username }}!</h1>
+	{% endif %}
+    <div class="topnav">
+        <a href="/home">Home</a>
+        <a href="#/latest">Latest</a>
+        <a href="#/search">Search</a>
+        <a href="#/makepost">Post</a>
+        <a href="/account/logout">Logout</a>
+    </div>
+    <div class="row">
+        <div class="leftcolumn">
+			<form class='card' action="{% url 'search' %}" method='GET'>
+				<input type='text' name='search' placeholder='Search'>
+				<button type="submit">Search</button>
+			</form>
+            <form method='POST'> <!--Modified by Jada-->
+                {% csrf_token %} <!--Django generates token for secure access (POST) to database-->
+                <div class="cardedit">
+                    <input type='text' name='title' placeholder='Title'></br>
+                    <input type='text' name='description' placeholder='Description'></br>
+                    <input type='text' name='text' placeholder='Post content'></br>
+                    <button type="submit">Post</button>
+                </div>
+            </form>
+        <!--For each object in the Posts database, replace each respective value in the appropriate HTML tag-->
+        {% for obj in all_posts %}
+            <div class="card">
+                <h2>{{ obj.title }}</h2>
+                <h5>{{ obj.description }}</h5>
+                <p>{{ obj.text }}</p>
+            </div>
+        {% endfor %}
+        </div>
+        <div class="rightcolumn">
+            <div class="card">
+                <h2>About Me</h2>
+                <img src="{% static 'images/profile.jpg' %}"/>
+                <p>Blah blah text</p>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="topnav">
+        <a href="/home">Home</a>
+        <a href="#/latest">Latest</a>
+        <a href="#/search">Search</a>
+        <a href="#/makepost">Post</a>
+        <a href="/account/logout">Logout</a>
+    </div>
+</body>
+</html>

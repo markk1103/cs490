@@ -1,0 +1,16 @@
+<!--Written by Jada-->
+{% load static %} <!--Loads static files (/static/css, etc.) into the HTML file-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <h1 style="text-align: center;">Logged Out</h1>
+    <a href="/account/login">Create a new Account</a>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% load static %} <!--Loads static files (/static/css, etc.) into the HTML file-->
+
+<!DOCTYPE html>
+<title>Homepage</title>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <h1 style="text-align: center;">Search Results</h1>
+    <div class="topnav">
+        <a href="/home">Home</a>
+        <a href="#/latest">Latest</a>
+        <a href="#/search">Search</a>
+        <a href="#/makepost">Post</a>
+        <a href="/account/logout">Logout</a>
+    </div>
+    <div class="row">
+        <div class="leftcolumn">
+        <!--For each object in the Search objects list, replace each respective value in the appropriate HTML tag-->
+	        <div class="card">
+				{% if object_list %}
+					<ul>
+					{% for user in object_list %}
+						<li>{{ user }}</li>
+			        {% endfor %}
+					</ul>
+				{% else %}
+					<h5>User not found</h5>
+				{% endif %}
+			</div>
+        </div>
+        <div class="rightcolumn">
+            <div class="card">
+                <h2>About Me</h2>
+                <img src="{% static 'images/profile.jpg' %}"/>
+                <p>Blah blah text</p>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="topnav">
+        <a href="/home">Home</a>
+        <a href="#/latest">Latest</a>
+        <a href="#/search">Search</a>
+        <a href="#/makepost">Post</a>
+        <a href="/account/logout">Logout</a>
+    </div>
+</body>
+</html>

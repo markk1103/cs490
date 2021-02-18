@@ -1,0 +1,54 @@
+﻿body {
+    background-color: gray;
+}
+
+form {
+    background-color: lightslategray;
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 350px;
+    padding: 12px 20px;
+    margin: 0px auto;
+    border: 1px solid #ccc;
+    display: block;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+button {
+    background-color: #0024de;
+    color: white;
+    padding: 14px 20px;
+    margin: 0;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 65px;
+    border: 2px solid black;
+    cursor: pointer;
+}
+
+
+    /* Add a hover effect for buttons */
+    button:hover {
+        opacity: 0.8;
+    }
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+}
